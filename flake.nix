@@ -14,6 +14,9 @@
     parts.inputs.nixpkgs-lib.follows = "nixpkgs";
     # s
     systems.url = "github:nix-systems/default";
+    # u
+    utils.url = "github:numtide/flake-utils";
+    utils.inputs.systems.follows = "systems";
   };
 
   outputs = { self, ... } @ inputs:
@@ -25,8 +28,6 @@
       }
       {
         systems = import inputs.systems;
-        imports = [
-          ./parts/formatter.nix
-        ];
+        imports = [ ./parts ];
       };
 }
