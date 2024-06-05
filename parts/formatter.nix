@@ -1,7 +1,7 @@
 args:
 
 {
-  perSystem = { pkgs, ... }: {
-    formatter = pkgs.nixpkgs-fmt;
+  perSystem = { unstable, ... }: {
+    formatter = unstable.nixpkgs-fmt;
   };
 }
