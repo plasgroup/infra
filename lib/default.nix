@@ -19,5 +19,8 @@ lib.extend (final: prev: lib.mergeAttrsList [
 
   # imports
   # TODO: automatic import and filename transformation
-  { filesIn = import ./files-in.nix final; }
+  {
+    filesIn = import ./files-in.nix final;
+    mkModuleArgs = import ./mk-module-args.nix final;
+  }
 ])
