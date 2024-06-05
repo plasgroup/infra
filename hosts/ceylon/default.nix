@@ -1,0 +1,5 @@
+{ ... } @ args:
+
+{
+  networking.hostName = "ceylon";
+}
