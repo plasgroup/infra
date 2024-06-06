@@ -10,6 +10,7 @@ in
     ./formatter.nix
     ./lib.nix
     ./nixos-configurations.nix
+    ./nixos-modules.nix
   ];
 
   perSystem = { system, ... }: {
