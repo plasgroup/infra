@@ -1,7 +1,10 @@
 { lib, config, ... }:
 
 {
-  imports = [ ];
+  imports = [
+    ./faculty.nix
+    ./student.nix
+  ];
 
   config = { };
 }
