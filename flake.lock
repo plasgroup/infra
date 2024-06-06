@@ -52,6 +52,26 @@
         "type": "github"
       }
     },
+    "noshell": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1717396029,
+        "narHash": "sha256-NPIhvnTYkJZqTY+aabbZ6CAaMAgG6IISvh7GZo1MTfQ=",
+        "owner": "viperml",
+        "repo": "noshell",
+        "rev": "4d194d838a50ea106cd0e47c024e47afc154ab42",
+        "type": "github"
+      },
+      "original": {
+        "owner": "viperml",
+        "repo": "noshell",
+        "type": "github"
+      }
+    },
     "parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -77,6 +97,7 @@
         "compat": "compat",
         "hm": "hm",
         "nixpkgs": "nixpkgs",
+        "noshell": "noshell",
         "parts": "parts",
         "systems": "systems",
         "unstable": "unstable",

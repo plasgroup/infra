@@ -9,6 +9,9 @@
     # h
     hm.url = "github:nix-community/home-manager";
     hm.inputs.nixpkgs.follows = "nixpkgs";
+    # n
+    noshell.url = "github:viperml/noshell";
+    noshell.inputs.nixpkgs.follows = "nixpkgs";
     # p
     parts.url = "github:hercules-ci/flake-parts";
     parts.inputs.nixpkgs-lib.follows = "nixpkgs";
