@@ -1,0 +1,44 @@
+# Nix
+.direnv/
+result/
+
+# Linux
+*~
+.Trash-*
+.directory
+.fuse_hidden*
+.nfs*
+
+# macOS
+.AppleDB
+.AppleDesktop
+.AppleDouble
+.DS_Store
+.DocumentRevisions-V100
+.LSOverride
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+._*
+.apdisk
+.com.apple.timemachine.donotpresent
+.fseventsd
+Icon
+Network Trash Folder
+Temporary Items
+
+# Windows
+$RECYCLE.BIN/
+*.cab
+*.lnk
+*.msi
+*.msix
+*.msm
+*.msp
+*.stackdump
+Thumbs.db
+Thumbs.db:encryptable
+[Dd]esktop.ini
+ehthumbs.db
+ehthumbs_vista.db
