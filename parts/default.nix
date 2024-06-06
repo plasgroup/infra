@@ -6,6 +6,7 @@ let
 in
 {
   imports = [
+    ./dev-shells.nix
     ./formatter.nix
     ./lib.nix
     ./nixos-configurations.nix
