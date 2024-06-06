@@ -1,4 +1,4 @@
-{ ... } @ args:
+{ ... }:
 
 {
   networking.hostName = "uva";
