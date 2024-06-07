@@ -13,9 +13,12 @@ in
       hosts = [ "assam" "ceylon" "uva" ];
     in
     lib.genAttrs hosts (host: lib.nixosSystem {
-      pkgs = import inputs.nixpkgs { inherit system config; };
-
       # args managed by `./lib/mk-module-args.nix`
+      # do not set `pkgs` like in `./parts/default.nix`
+      # with `_module.args`, some options might refer to a nonexistent package
+      # also, do not set other additional module arguments with `_module.args`
+      # to prevent infinite recursion
+      pkgs = import inputs.nixpkgs { inherit system config; };
       specialArgs = lib.mkModuleArgs {
         inherit system config;
         instances = [{ instance = inputs.unstable; name = "unstable"; }];
