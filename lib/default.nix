@@ -22,5 +22,7 @@ lib.extend (final: prev: lib.mergeAttrsList [
   {
     filesIn = import ./files-in.nix final;
     mkModuleArgs = import ./mk-module-args.nix final;
+    nixpkgsConfig = import ./nixpkgs-config.nix final;
+    users = import ./users.nix final;
   }
 ])
