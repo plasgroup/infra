@@ -1,6 +1,5 @@
-{ inputs, outputs, ... }:
+{ inputs, lib, ... }:
 
-let lib = outputs.lib; in
 {
   imports = [
     inputs.noshell.nixosModules.default
