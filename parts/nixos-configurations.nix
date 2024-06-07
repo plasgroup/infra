@@ -3,6 +3,7 @@ args:
 let
   inherit (args) inputs outputs;
   inherit (outputs) lib;
+  config = lib.nixpkgsConfig;
 in
 {
   # x86_64-linux systems
@@ -12,18 +13,16 @@ in
       hosts = [ "assam" "ceylon" "uva" ];
     in
     lib.genAttrs hosts (host: lib.nixosSystem {
+      pkgs = import inputs.nixpkgs { inherit system config; };
+
+      # args managed by `./lib/mk-module-args.nix`
+      specialArgs = lib.mkModuleArgs {
+        inherit system config;
+        instances = [{ instance = inputs.unstable; name = "unstable"; }];
+        extraArgs = { inherit inputs outputs lib; };
+      };
+
       modules = [
-        {
-          # args managed by `./lib/mk-module-args.nix`
-          _module.args = lib.mkModuleArgs {
-            inherit system;
-            instances = [
-              { instance = inputs.nixpkgs; name = "pkgs"; }
-              { instance = inputs.unstable; name = "unstable"; }
-            ];
-            extraArgs = { inherit inputs outputs lib; };
-          };
-        }
         # system config
         (../hosts/. + "/${host}")
         # platform

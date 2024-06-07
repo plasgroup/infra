@@ -3,6 +3,7 @@ args:
 let
   inherit (args) inputs outputs;
   inherit (outputs) lib;
+  config = lib.nixpkgsConfig;
 in
 {
   imports = [
@@ -16,7 +17,7 @@ in
   perSystem = { system, ... }: {
     # args managed by `./lib/mk-module-args.nix`
     _module.args = lib.mkModuleArgs {
-      inherit system;
+      inherit system config;
       instances = [
         { instance = inputs.nixpkgs; name = "pkgs"; }
         { instance = inputs.unstable; name = "unstable"; }
