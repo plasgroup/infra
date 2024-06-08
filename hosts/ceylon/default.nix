@@ -2,7 +2,6 @@
 
 {
   imports = [
-    inputs.noshell.nixosModules.default
     outputs.nixosModules.users
   ];
 

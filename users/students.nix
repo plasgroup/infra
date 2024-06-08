@@ -14,20 +14,10 @@ in
   */
 
   ysun = {
-    allowedHosts = [ ];
+    allowedHosts = [ "all" ];
     uid = 2000;
     description = "Yifei Sun";
     home = "/home/ysun";
-    inherit extraGroups;
-    openssh.authorizedKeys.keys = [ ];
-  };
-
-
-  test = {
-    allowedHosts = [ ];
-    uid = 2001;
-    description = "Test User";
-    home = "/home/test";
     inherit extraGroups;
     openssh.authorizedKeys.keys = [ ];
   };
