@@ -2,8 +2,7 @@ args:
 
 let
   # base
-  inherit (args.inputs) nixpkgs;
-  inherit (nixpkgs) lib;
+  inherit (args.inputs.nixpkgs) lib;
 
   # extensions
   inherit (args.inputs) hm parts utils;
