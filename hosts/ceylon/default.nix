@@ -3,6 +3,7 @@
 {
   imports = [
     outputs.nixosModules.common
+    outputs.nixosModules.packages
     outputs.nixosModules.users
   ];
 
