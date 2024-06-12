@@ -12,7 +12,7 @@ lib:
 (lib.listToAttrs (builtins.map
   (attr: {
     inherit (attr) name;
-    value = lib.mkDefault (import attr.instance { inherit system config overlays; });
+    value = (lib.mkDefault (import attr.instance { inherit system config overlays; })).content;
   })
   instances
 )) // extraArgs
