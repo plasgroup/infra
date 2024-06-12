@@ -15,6 +15,7 @@
     nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
 
     settings = {
+      auto-optimise-store = true;
       builders-use-substitutes = true;
       use-xdg-base-directories = true;
       warn-dirty = false;
