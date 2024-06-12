@@ -1,6 +1,9 @@
 { inputs, ... }:
 
 {
+  # use nix-index-database
+  programs.command-not-found.enable = false;
+
   imports = [
     inputs.index.nixosModules.nix-index
     inputs.srvos.nixosModules.server
