@@ -61,6 +61,63 @@ To change the root disk name, change `disko.rootDisk = "/dev/<dev name>";`
 
 ZFS requires host ID to be unique, to change the host ID, change `networking.hostId = <str>;`. The following command can be used to generate a unique host ID: `head -c4 /dev/urandom | od -A none -t x4`.
 
+### Installation
+
+#### (Optional) Secure Boot
+
+If the host BIOS supports Secure Boot, you'll need to disable it first before booting into the NixOS live CD.
+
+- Make sure the host supports Secure Boot on hardware level.
+- Disable Secure Boot in the BIOS settings.
+- Change BIOS settings to allow writes to BIOS secure boot keys (look for keywords like "PKI Bundle").
+
+Related:
+
+- [NixOS Secure Boot Wiki](https://wiki.nixos.org/wiki/Secure_Boot)
+- [Lanzaboote](https://github.com/nix-community/lanzaboote/blob/master/docs/QUICK_START.md)
+
+#### Format and Install
+
+Boot to the NixOS live CD, then run the following command to format the disk (replace `<machine>` with the machine name):
+
+```shell
+bash $(nix --extra-experimental-features "nix-command flakes" build --no-link --print-out-paths github:plasgroup/infra#nixosConfigurations.<machine>.config.system.build.diskoScript)
+```
+
+Then execute the following command to install the system:
+
+```shell
+nixos-install --flake github:plasgroup/infra#<machine>
+```
+
+If you used Secure Boot, you'll probably see some errors during the installation process, but you can ignore them here, for now.
+
+(Optional, Secure Boot Only)
+
+```shell
+# get the secure boot keys
+nix --extra-experimental-features "nix-command flakes" shell nixpkgs#sbctl
+sbctl create-keys && mv /etc/secureboot /mnt/etc
+# run the installation script again
+nixos-install --flake github:plasgroup/infra#<machine>
+# reboot into the new system
+sbctl verify
+```
+
+Reboot into BIOS settings:
+  
+- Enable Secure Boot.
+- Erase all Secure Boot Settings (or look for a similar option to wipe the Secure Boot keys).
+- Boot into the new system.
+
+Execute the following command to install Lanzaboote managed secure boot PKI Bundle:
+
+```shell
+sbctl enroll-keys --microsoft
+```
+
+Reboot and check secure boot status: `bootctl status`.
+
 ## License
 
 All contents inside this repository, excluding submodules, are licensed under the [MIT License](license.txt).
