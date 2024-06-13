@@ -4,9 +4,62 @@
 
 ## Structure
 
+- `./hosts`: Host-specific configurations
 - `./lib`: Where all helper functions live
-- `./modules`:
+- `./modules`: NixOS modules
 - `./parts`: All top-level attrs must be exported from files inside `./parts`.
+- `./users`: Users and access control
+
+## Users
+
+To add a new user, add an entry to either `./users/faculties.nix` or `./users/students.nix`.
+
+### Entry Format
+
+```nix
+# other configuration options in https://mynixos.com/nixpkgs/options/users.users.%3Cname%3E are also allowed
+<username> = {                         # username, no naming convention enforced
+    allowedHosts = [ ];                # the host name must `[ "all" ]` or one or more of the names in the `./hosts` directory
+    uid = <int>;                       # uid: faculty uid range [1000, 2000), student uid range [2000, 3000)
+    description = "Full Name";         # full name, first + last
+    hashedPassword = "$...";           # execution result of `nix run nixpkgs#mkpasswd -- --method=sha-512`
+    home = "/home/<username>";         # user's home directory, `<username>` must be the same as the key
+    extraGroups = [ ];                 # a list of groups where the user belongs to
+    openssh.authorizedKeys.keys = [ ]; # ssh keys
+};
+```
+
+Please note that users and groups are immutable
+To update a user, you must change relevant fields in
+either `./users/faculties.nix` or `./users/students.nix`,
+then rebuild the system.
+
+### Login Shell
+
+Login shells are managed by [`noshell`](https://github.com/viperml/noshell),
+you can change the default shell by simply symlinking the desired shell
+executable to `~/.config/shell`.
+
+By default, the system provides `bash`, `fish`, `nushell`, and `zsh` (under `./modules/packages/shells.nix`).
+You can
+link one of them by executing `ln -sT $(which <shell>) ~/.config/shell`.
+
+Or with [`home-manager`](https://github.com/nix-community/home-manager) standalone
+installation with `xdg.configFile."shell".source = lib.getExe pkgs.<your shell package>;`
+added to the user's configuration.
+
+## Hosts
+
+All hosts are defined in `./hosts` directory, and exported in `./parts/nixos-configurations.nix`.
+
+### Base Configuration
+
+All hosts by default uses ZFS on a disk named `nvme0n1`,
+two partitions are created, ESP (FAT) and ROOT (ZFS).
+
+To change the root disk name, change `disko.rootDisk = "/dev/<dev name>";`
+
+ZFS requires host ID to be unique, to change the host ID, change `networking.hostId = <str>;`. The following command can be used to generate a unique host ID: `head -c4 /dev/urandom | od -A none -t x4`.
 
 ## License
 
