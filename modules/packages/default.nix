@@ -20,6 +20,7 @@
     gcc
     git
     go
+    home-manager
     htop
     iotop
     iperf
