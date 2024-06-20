@@ -14,6 +14,10 @@
 
 To add a new user, add an entry to either `./users/faculties.nix` or `./users/students.nix`.
 
+Users are exported to all NixOS hosts via `./modules/users/default.nix`.
+
+Home directories are mounted on a NFS export defined in `./modules/nfs-client/default.nix`.
+
 ### Entry Format
 
 ```nix
