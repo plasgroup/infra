@@ -1,4 +1,4 @@
-lib:
+{ lib }:
 
 # import all users from `./users`
 let

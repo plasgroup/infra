@@ -1,4 +1,4 @@
-lib:
+{ lib }:
 
 { instances # a list of attrsets
   # [ { instance = args.inputs.nixpkgs;  name = "pkgs"; }
