@@ -4,6 +4,7 @@
   imports = [
     outputs.nixosModules.common
     outputs.nixosModules.disko
+    outputs.nixosModules.nfs-client
     outputs.nixosModules.packages
     outputs.nixosModules.users
   ];
