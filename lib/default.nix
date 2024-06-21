@@ -21,10 +21,12 @@ lib.extend (final: prev: lib.mergeAttrsList [
   (
     let
       # kebabToCamel "abc-def-g" -> "abcDefG"
-      kebabToCamel = s: mutFirstChar lib.toLower (lib.concatStrings
-        (builtins.map
-          (s': mutFirstChar lib.toUpper s')
-          (lib.splitString "-" s)));
+      # https://discourse.nixos.org/t/implementing-kebab-case-to-camelcase-in-nix/47313/3
+      kebabToCamel = s:
+        mutFirstChar lib.toLower (lib.concatMapStrings
+          (mutFirstChar lib.toUpper) # eta reduction
+          (lib.splitString "-" s)
+        );
 
       # imports all nix files in `dir` with `args`
       # excluding files specified in `exclude`
@@ -47,9 +49,10 @@ lib.extend (final: prev: lib.mergeAttrsList [
       # mutFirstChar toUpper "abcd" -> "Abcd"
       mutFirstChar = f: s:
         let
-          c = lib.stringToCharacters s;
+          first = f (lib.substring 0 1 s);
+          rest = lib.substring 1 (-1) s;
         in
-        lib.concatStrings ([ (f (lib.head c)) ] ++ (lib.sublist 1 (lib.length c) c));
+        first + rest;
     in
     { inherit kebabToCamel loadAll mutFirstChar; } // loadAll {
       dir = ./.;
