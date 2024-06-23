@@ -24,7 +24,7 @@ Home directories are mounted on a NFS export defined in `./modules/nfs-client/de
 # other configuration options in https://mynixos.com/nixpkgs/options/users.users.%3Cname%3E are also allowed
 <username> = {                         # username, no naming convention enforced
     allowedHosts = [ ];                # the host name must `[ "all" ]` or one or more of the names in the `./hosts` directory
-    uid = <int>;                       # uid: faculty uid range [1000, 2000), student uid range [2000, 3000)
+    uid = <int>;                       # id: use the matching id from the internal wiki
     description = "Full Name";         # full name, first + last
     hashedPassword = "$...";           # execution result of `nix run nixpkgs#mkpasswd -- --method=sha-512`
     home = "/home/<username>";         # user's home directory, `<username>` must be the same as the key

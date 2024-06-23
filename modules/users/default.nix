@@ -18,7 +18,7 @@
       (attr: {
         name = attr.name;
         value = {
-          inherit (attr.value) description extraGroups home openssh uid;
+          inherit (attr.value) description extraGroups hashedPassword home openssh uid;
           isNormalUser = true;
           shell = inputs.noshell.packages.${pkgs.stdenv.system}.default;
         };
