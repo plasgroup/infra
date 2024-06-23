@@ -7,7 +7,7 @@ in
       allowedHosts = [ ];                # a list of hosts where the user is allowed access to, the host name must be one of the names in the `./hosts` directory
       uid = 1000;                        # id: use the matching id from the internal wiki
       description = "Full Name";         # full name, first + last
-      hashedPassword = "$...";           # hash your password with `nix run nixpkgs#mkpasswd -- --method=sha-512`
+      hashedPassword = "$...";           # hash your password with `nix run nixpkgs#mkpasswd`
       home = "/home/<username>";         # user's home directory
       extraGroups = [ ];                 # a list of groups where the user belongs to
       openssh.authorizedKeys.keys = [ ]; # ssh keys
@@ -18,7 +18,7 @@ in
     allowedHosts = [ "all" ];
     uid = 1207;
     description = "Yifei Sun";
-    hashedPassword = "$6$Kc2LTjKznVxi4fra$tnDh5PpOiWNYzJSo479KWOuzgJR/nrrlN.Optyb5KFBaJfVbQC.7RYkYI.8BXKEvvIDbHYP70EdMho2GIqDbW/";
+    hashedPassword = "$y$j9T$y3Sihu5luKCvYN2xTmqZZ1$bcBvAG38StMWjFLbnXRuydFCq6g.hgy5tOMoIf9C166";
     home = "/home/yifei";
     inherit extraGroups;
     openssh.authorizedKeys.keys = [
