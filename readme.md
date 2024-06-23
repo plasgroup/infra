@@ -103,7 +103,7 @@ If you used Secure Boot, you'll probably see some errors during the installation
 nix --extra-experimental-features "nix-command flakes" shell nixpkgs#sbctl
 sbctl create-keys && mv /etc/secureboot /mnt/etc
 # run the installation script again
-nixos-install --flake github:plasgroup/infra#<machine>
+nixos-install --no-root-passwd --flake github:plasgroup/infra#<machine>
 # reboot into the new system
 sbctl verify
 ```
