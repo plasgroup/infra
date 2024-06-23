@@ -1,14 +1,15 @@
-{ unstable, inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
     inputs.srvos.nixosModules.mixins-tracing
 
     ./shells.nix
+    ./virtualization.nix
   ];
 
   config = {
-    environment.systemPackages = with unstable; [
+    environment.systemPackages = with pkgs; [
       binutils
       btop
       clang
