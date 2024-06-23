@@ -2,6 +2,8 @@
 
 {
   imports = [
+    ./hardware.nix
+
     outputs.nixosModules.common
     outputs.nixosModules.disko
     outputs.nixosModules.nfs-client
