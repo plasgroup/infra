@@ -31,7 +31,7 @@ in
     allowedHosts = [ "all" ];
     uid = 1102;
     description = "Kazuki Ichinose";
-    hashedPassword = "$6$3qky8q4NNESPbJW8$tm.uKl4xsJUKHrorTw9myBMaaXjqyJLEQLFi1qunRP/1AtGZyhV3JK0G3J1kCS/aZSKtffcPwYuaZYU5kijFh1";
+    hashedPassword = "$y$j9T$yfgRspoyR4N9l9n7fzwnE1$zUb6aZil7ZmqnHiS18I2Z2BHCf2ZX66MOB7IFKI0pI7";
     home = "/home/ichinose";
     inherit extraGroups;
     openssh.authorizedKeys.keys = [
