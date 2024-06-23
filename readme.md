@@ -85,7 +85,7 @@ Related:
 Boot to the NixOS live CD, then run the following command to format the disk (replace `<machine>` with the machine name):
 
 ```shell
-bash $(nix --extra-experimental-features "nix-command flakes" build --no-link --print-out-paths github:plasgroup/infra#nixosConfigurations.<machine>.config.system.build.diskoScript)
+bash $(nix --extra-experimental-features "nix-command flakes" --refresh build --no-link --print-out-paths github:plasgroup/infra#nixosConfigurations.<machine>.config.system.build.diskoScript)
 ```
 
 Then execute the following command to install the system:
