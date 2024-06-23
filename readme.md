@@ -91,7 +91,7 @@ bash $(nix --extra-experimental-features "nix-command flakes" build --no-link --
 Then execute the following command to install the system:
 
 ```shell
-nixos-install --flake github:plasgroup/infra#<machine>
+nixos-install --no-root-passwd --flake github:plasgroup/infra#<machine>
 ```
 
 If you used Secure Boot, you'll probably see some errors during the installation process, but you can ignore them here, for now.
