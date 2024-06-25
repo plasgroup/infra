@@ -6,6 +6,7 @@
     outputs.nixosModules.disko
     outputs.nixosModules.nfs-client
     outputs.nixosModules.packages
+    outputs.nixosModules.time
     outputs.nixosModules.users
   ];
 

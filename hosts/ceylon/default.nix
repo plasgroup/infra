@@ -10,6 +10,7 @@
     outputs.nixosModules.nfs-client
     outputs.nixosModules.packages
     outputs.nixosModules.secureboot
+    outputs.nixosModules.time
     outputs.nixosModules.users
   ];
 
