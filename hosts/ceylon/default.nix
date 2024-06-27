@@ -6,7 +6,6 @@
     ./network.nix
 
     outputs.nixosModules.common
-    outputs.nixosModules.desktop
     outputs.nixosModules.disko
     outputs.nixosModules.nfs-client
     outputs.nixosModules.packages
