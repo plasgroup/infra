@@ -19,10 +19,17 @@
         name = attr.name;
         value = {
           inherit (attr.value) description extraGroups hashedPassword home openssh uid;
+          group = "plas";
           isNormalUser = true;
           shell = inputs.noshell.packages.${pkgs.stdenv.system}.default;
         };
       })
       (lib.filter (attr: lib.elem config.networking.hostName attr.value.allowedHosts) (lib.attrsToList lib.users)));
+
+    users.groups = {
+      plas.gid = 500;
+      faculty.gid = 501;
+      student.gid = 502;
+    };
   };
 }
