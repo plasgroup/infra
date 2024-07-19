@@ -1,17 +1,17 @@
-{ inputs, outputs, ... }:
+{ inputs, ... }:
 
 {
-  imports = [
+  imports = with inputs; [
     ./hardware.nix
     ./network.nix
 
-    outputs.nixosModules.common
-    outputs.nixosModules.disko
-    outputs.nixosModules.nfs-client
-    outputs.nixosModules.packages
-    outputs.nixosModules.secureboot
-    outputs.nixosModules.time
-    outputs.nixosModules.users
+    self.nixosModules.common
+    self.nixosModules.disko
+    self.nixosModules.nfs-client
+    self.nixosModules.packages
+    self.nixosModules.secureboot
+    self.nixosModules.time
+    self.nixosModules.users
   ];
 
   disko.rootDisk = "/dev/nvme0n1";

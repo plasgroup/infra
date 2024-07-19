@@ -1,5 +1,31 @@
 {
   "nodes": {
+    "autopilot": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "parts": [
+          "parts"
+        ],
+        "systems": [
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1721376762,
+        "narHash": "sha256-SBBLYd/FsGoCc83z8/YR672NXLFn8aTfVvTX9dzabw8=",
+        "owner": "stepbrobd",
+        "repo": "autopilot",
+        "rev": "194f46334d55ff1ee7bb1b0c71ede5916d450364",
+        "type": "github"
+      },
+      "original": {
+        "owner": "stepbrobd",
+        "repo": "autopilot",
+        "type": "github"
+      }
+    },
     "compat": {
       "flake": false,
       "locked": {
@@ -257,6 +283,7 @@
     },
     "root": {
       "inputs": {
+        "autopilot": "autopilot",
         "compat": "compat",
         "crane": "crane",
         "disko": "disko",

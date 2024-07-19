@@ -1,15 +1,11 @@
-args:
-
 {
-  perSystem = { unstable, ... }:
-    let pkgs = unstable; in
-    {
-      devShells.default = pkgs.mkShell {
-        packages = with pkgs; [
-          direnv
-          git
-          nix-direnv
-        ];
-      };
+  perSystem = { unstable, ... }: {
+    devShells.default = unstable.mkShell {
+      packages = with unstable; [
+        direnv
+        git
+        nix-direnv
+      ];
     };
+  };
 }

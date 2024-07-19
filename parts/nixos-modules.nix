@@ -1,8 +1,5 @@
-{ moduleWithSystem, ... } @ args:
+{ lib, moduleWithSystem, ... }:
 
-let
-  inherit (args.outputs) lib;
-in
 {
   flake.nixosModules =
     lib.genAttrs
@@ -10,7 +7,7 @@ in
       (module: moduleWithSystem (
         # must use explicit args here to pass them to imported nixos module
         # see `moduleWithSystem` in flake-parts docs for more details
-        { inputs, outputs, lib, pkgs, unstable }:
+        { inputs, lib, pkgs, unstable }:
         { imports = [ (import (../modules/nixos/. + "/${module}")) ]; }
       ));
 }

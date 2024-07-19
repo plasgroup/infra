@@ -1,9 +1,5 @@
-args:
-
 {
-  perSystem = { unstable, ... }:
-    let pkgs = unstable; in
-    {
-      formatter = pkgs.nixpkgs-fmt;
-    };
+  perSystem = { unstable, ... }: {
+    formatter = unstable.nixpkgs-fmt;
+  };
 }

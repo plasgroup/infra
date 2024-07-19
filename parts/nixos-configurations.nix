@@ -1,9 +1,7 @@
-args:
+{ lib, inputs, ... }:
 
 let
-  inherit (args) inputs outputs;
-  inherit (outputs) lib;
-  config = lib.nixpkgsConfig;
+  config = { allowUnfree = true; allowUnfreePredicate = (_: true); };
 in
 {
   # x86_64-linux systems
@@ -18,11 +16,11 @@ in
       # with `_module.args`, some options might refer to a nonexistent package
       # also, do not set other additional module arguments with `_module.args`
       # to prevent infinite recursion
-      pkgs = import inputs.nixpkgs { inherit system config; };
+      pkgs = import inputs.nixpkgs { inherit config system; };
       specialArgs = lib.mkModuleArgs {
-        inherit system config;
+        inherit config system;
         instances = [{ instance = inputs.unstable; name = "unstable"; }];
-        extraArgs = { inherit inputs outputs lib; };
+        extraArgs = { inherit lib inputs; };
       };
 
       modules = [

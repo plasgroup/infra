@@ -1,20 +1,39 @@
 {
-  outputs = { self, ... } @ inputs:
-    let inherit (self) outputs; in
-    inputs.parts.lib.mkFlake
-      {
-        inherit inputs;
-        specialArgs = { inherit outputs; };
-      }
-      {
-        systems = import inputs.systems;
-        imports = [ ./parts ];
+  outputs = { self, ... } @ inputs: inputs.autopilot.lib.mkFlake
+    {
+      inherit inputs;
+
+      autopilot = {
+        lib = {
+          path = ./lib;
+          excludes = [ ];
+          extender = inputs.nixpkgs.lib;
+          extensions = with inputs; [ autopilot.lib hm.lib parts.lib utils.lib ];
+        };
+
+        nixpkgs = {
+          config = { allowUnfree = true; allowUnfreePredicate = (_: true); };
+          overlays = [ ];
+          instances = [
+            { name = "pkgs"; value = inputs.nixpkgs; }
+            { name = "unstable"; value = inputs.unstable; }
+          ];
+        };
+
+        parts = { path = ./parts; excludes = [ ]; };
       };
+    }
+    { systems = import inputs.systems; };
 
   inputs = {
     # nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/release-24.05";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    # a
+    autopilot.url = "github:stepbrobd/autopilot";
+    autopilot.inputs.nixpkgs.follows = "nixpkgs";
+    autopilot.inputs.parts.follows = "parts";
+    autopilot.inputs.systems.follows = "systems";
     # c
     compat.url = "github:edolstra/flake-compat";
     compat.flake = false;
