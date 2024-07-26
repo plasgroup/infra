@@ -20,7 +20,7 @@
   # https://github.com/nixos/nixpkgs/issues/226365
   networking.firewall.interfaces."podman*".allowedUDPPorts = [ 53 5353 ];
 
-  # https://nixos.wiki/wiki/Podman
+  # https://wiki.nixos.org/wiki/Podman
   virtualisation.oci-containers.backend = "podman";
 
   environment.systemPackages = with pkgs; [
