@@ -6,7 +6,7 @@ in
     allowedHosts = [ "all" ];
     uid = 1001;
     description = "Tomoharu Ugawa";
-    hashedPassword = "$y$j9T$y3Sihu5luKCvYN2xTmqZZ1$bcBvAG38StMWjFLbnXRuydFCq6g.hgy5tOMoIf9C166";
+    hashedPassword = "$y$j9T$gf9RwU4NQLXjKCIAezH1f0$LwbdlPafkYfQaICGypuHh2stDPlhSvIzBbhkeuQUEm.";
     home = "/home/ugawa";
     inherit extraGroups;
     openssh.authorizedKeys.keys = [
