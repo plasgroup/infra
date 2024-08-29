@@ -2,7 +2,7 @@ let
   extraGroups = [ "wheel" "faculty" ];
 in
 {
-ugawa = {
+  ugawa = {
     allowedHosts = [ "all" ];
     uid = 1001;
     description = "Tomoharu Ugawa";
