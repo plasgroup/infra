@@ -51,6 +51,14 @@
       wget
       whois
       zulu
+      libyaml
+      zlib
+      autoconf
+      gperf
+      gnumake
+      libffi
+      gmp
+      rustc
     ];
   };
 }
