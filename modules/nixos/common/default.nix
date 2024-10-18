@@ -10,6 +10,7 @@
     ./i18n.nix
     ./nix.nix
     ./nixpkgs.nix
+    ./compatibility.nix
   ];
 
   config = {
